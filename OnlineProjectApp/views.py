@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from services.models import Service
 
 
 def home(request):
@@ -6,7 +7,9 @@ def home(request):
 
 
 def services(request):
-    return render(request, 'OnlineProjectApp/services.html')
+    # Get all services from the database
+    services = Service.objects.all()
+    return render(request, 'OnlineProjectApp/services.html', {'services': services})
 
 
 def store(request):
