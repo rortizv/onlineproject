@@ -8,6 +8,7 @@
         <div class="row" style="gap: 20px;">
             {% for post in posts %}
                 <div class="card" style="width: 18rem;">
+                    <p>{{post.categories.all}}</p>
                     <img src="{{post.image.url}}" class="card-img-top" alt="Post" style="height: 10rem;">
                     <div class="card-body">
                         <h5 class="font-weight-bold card-title">{{post.title}}</h5>
