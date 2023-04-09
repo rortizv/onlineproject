@@ -5,11 +5,13 @@
 {% block content %}
 
 <div style="display: flex; flex-direction: column; align-items: center; margin: 2rem 0;">
-    <table style="display: flex; flex-direction: column;width: 30%; justify-content: center; color: #FFFFFF; gap: 10px;">
-        {{form}}
-    </table>
-    <br>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <form action="" method="POST" class="text-center"> {% csrf_token %}
+        <table style="display: flex; flex-direction: column;width: 30%; justify-content: center; color: #FFFFFF; gap: 10px;">
+            {{form.as_table}}
+        </table>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 
 {% endblock %}
