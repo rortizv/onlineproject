@@ -1,13 +1,12 @@
 from django.urls import path
-from OnlineProjectApp import views
 from django.conf import settings
 from django.conf.urls.static import static
+from OnlineProjectApp import views
 
 
 urlpatterns = [
     path('', views.home, name='Home'),
     path('store/', views.store, name='Store'),
-    path('blog/', views.blog, name='Blog'),
     path('contact/', views.contact, name='Contact'),
 ]
 
