@@ -4,18 +4,19 @@
 
 {% block content %}
 
-    <div class="m-4" style="display: flex; justify-content: center;">
-        <div class="row" style="gap: 20px;">
+    <div class="container">
+        <div class="row">
             {% for product in products %}
-                <div class="card" style="width: 18rem;">
+            <div class="col-md-3 mt-5 mb-5">
+                <div class="card" style="100%;">
                     <img src="{{product.image.url}}" class="card-img-top" alt="Product" style="height: 10rem;">
                     <div class="card-body">
                         <h5 class="font-weight-bold card-title">{{product.name}}</h5>
-                        <p class="card-text">{{product.price}}</p>
+                        <p class="card-text">$ {{ product.price }}</p>
                     </div>
-                    <br>
-                    <button class="btn btn-primary m-3" href="#">View</button>
+                    {% comment %} <button class="btn btn-primary m-3" href="#">View</button> {% endcomment %}
                 </div>
+            </div>
             {% endfor %}
         </div>
     </div>
