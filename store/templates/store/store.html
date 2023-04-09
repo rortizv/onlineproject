@@ -4,6 +4,20 @@
 
 {% block content %}
 
-<h1 style="color: #FFFFFF;">Store page is working</h1>
+    <div class="m-4" style="display: flex; justify-content: center;">
+        <div class="row" style="gap: 20px;">
+            {% for product in products %}
+                <div class="card" style="width: 18rem;">
+                    <img src="{{product.image.url}}" class="card-img-top" alt="Product" style="height: 10rem;">
+                    <div class="card-body">
+                        <h5 class="font-weight-bold card-title">{{product.name}}</h5>
+                        <p class="card-text">{{product.price}}</p>
+                    </div>
+                    <br>
+                    <button class="btn btn-primary m-3" href="#">View</button>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}
