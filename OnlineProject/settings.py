@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'OnlineProjectApp',
     'services',
     'blog',
+    'contact',
 ]
 
 MIDDLEWARE = [
