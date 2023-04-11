@@ -10,7 +10,7 @@ class ShoppingCart:
 
     def add(self, product):
         if str(product.id) not in self.shopping_cart.keys():
-            self.shopping_cart[product_id] = {
+            self.shopping_cart[product.id] = {
                 'product_id': product.id,
                 'name': product.name,
                 'price': str(product.price),
@@ -21,6 +21,7 @@ class ShoppingCart:
             for key, value in self.shopping_cart.items():
                 if key == str(product.id):
                     value['quantity'] = value['quantity'] + 1
+                    value['price'] = float(value['price']) + product.price
                     break
         self.save()
 
@@ -31,20 +32,21 @@ class ShoppingCart:
 
 
     def remove(self, product):
-        if str(product.id) in self.shopping_cart:
-            del self.shopping_cart[product_id]
+        product.id = str(product.id)
+        if product.id in self.shopping_cart:
+            del self.shopping_cart[product.id]
             self.save()
 
     
     def decrement(self, product):
-        if str(product.id) in self.shopping_cart:
-            for key, value in self.shopping_cart.items():
-                if key == product.id:
-                    value['quantity'] = value['quantity'] - 1
-                    if value['quantity'] < 1:
-                        self.remove(product)
-                    break
-            self.save()
+        for key, value in self.shopping_cart.items():
+            if key == str(product.id):
+                value['quantity'] = value['quantity'] - 1
+                value['price'] = float(value['price']) - product.price
+                if value['quantity'] < 1:
+                    self.remove(product)
+                break
+        self.save()
 
 
     def clear(self):

@@ -6,8 +6,8 @@
 
     <div class="container">
 
-        <div style="float:right; background-color: red; border-radius: 50%;">
-            {% include 'shopping_cart.widget.html' %}
+        <div style="float:right;" class="mt-5">
+            {% include 'shopping_cart/widget.html' %}
         </div>
         
         <div class="row">
@@ -20,7 +20,7 @@
                         <p class="card-text">$ {{ product.price }}</p>
                     </div>
                     <div class="card-footer text-center">
-                        <button href="{% url 'shopping_cart:add' product.id %}" class="btn btn-success">Add to cart</button>
+                        <a href="{% url 'shopping_cart:add' product.id %}" class="btn btn-success">Add to cart</a>
                     </div>
                 </div>
             </div>
