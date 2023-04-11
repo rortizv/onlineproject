@@ -6,25 +6,25 @@ from store.models import Product
 def add_product(request, product_id):
     shopping_cart = ShoppingCart(request)
     product = Product.objects.get(id=product_id)
-    shopping_cart.add(product)
-    return redirect('store')
+    shopping_cart.add(product=product)
+    return redirect('Store')
 
 
 def remove_product(request, product_id):
     shopping_cart = ShoppingCart(request)
     product = Product.objects.get(id=product_id)
     shopping_cart.remove(product)
-    return redirect('store')
+    return redirect('Store')
 
 
 def decrement_product(request, product_id):
     shopping_cart = ShoppingCart(request)
     product = Product.objects.get(id=product_id)
     shopping_cart.decrement(product)
-    return redirect('store')
+    return redirect('Store')
 
 
 def clear_cart(request):
     shopping_cart = ShoppingCart(request)
     shopping_cart.clear()
-    return redirect('store')
+    return redirect('Store')

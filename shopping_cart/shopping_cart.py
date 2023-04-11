@@ -5,13 +5,11 @@ class ShoppingCart:
         shopping_cart = self.session.get('shopping_cart')
         if not shopping_cart:
             shopping_cart = self.session['shopping_cart'] = {}
-        else:
-            self.shopping_cart = shopping_cart
+        self.shopping_cart = shopping_cart
 
 
     def add(self, product):
-        product_id = str(product.id)
-        if product_id not in self.shopping_cart.keys():
+        if str(product.id) not in self.shopping_cart.keys():
             self.shopping_cart[product_id] = {
                 'product_id': product.id,
                 'name': product.name,
@@ -21,7 +19,7 @@ class ShoppingCart:
             }
         else:
             for key, value in self.shopping_cart.items():
-                if key == product_id:
+                if key == str(product.id):
                     value['quantity'] = value['quantity'] + 1
                     break
         self.save()
@@ -33,15 +31,13 @@ class ShoppingCart:
 
 
     def remove(self, product):
-        product.id = str(product.id)
-        if product.id in self.shopping_cart:
+        if str(product.id) in self.shopping_cart:
             del self.shopping_cart[product_id]
             self.save()
 
     
     def decrement(self, product):
-        product.id = str(product.id)
-        if product.id in self.shopping_cart:
+        if str(product.id) in self.shopping_cart:
             for key, value in self.shopping_cart.items():
                 if key == product.id:
                     value['quantity'] = value['quantity'] - 1
