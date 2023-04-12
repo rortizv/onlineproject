@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import View
-
+from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 class VRegister(View):
     def get(self, request):
@@ -11,6 +12,11 @@ class VRegister(View):
     def post(self, request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('register')
-        return render(request, 'register/register.html', {'form': form})
+            user = form.save()
+            login(request, user)
+            return redirect('Home')
+        else:
+            for msg in form.error_messages:
+                messages.error(request, form.error_messages[msg])
+
+            return render(request, "register/register.html", {"form":form})

@@ -1,10 +1,10 @@
 class ShoppingCart:
     def __init__(self, request):
-        self.request = request
-        self.session = request.session
-        shopping_cart = self.session.get('shopping_cart')
-        if not shopping_cart:
-            shopping_cart = self.session['shopping_cart'] = {}
+        # self.request = request
+        # self.session = request.session
+        # shopping_cart = self.session.get('shopping_cart')
+        # if not shopping_cart:
+        #     shopping_cart = self.session['shopping_cart'] = {}
         self.shopping_cart = shopping_cart
 
 
