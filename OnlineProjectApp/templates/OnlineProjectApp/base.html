@@ -24,6 +24,16 @@
     <span class="site-heading-lower">Shipping management</span>
   </h1>
 
+  <div style="color: #FFFFFF; display: flex; justify-content: end; margin: 1rem;">
+    {% if user.is_authenticated %}
+      Hello {{ user.username }} &nbsp; &nbsp; <a href="{% url 'logout' %}" style="color: #FFFFFF;">Logout</a>
+    {% else %}
+      <div style="display: flex;">
+        <a href="{% url 'login' %}" style="color: #FFFFFF;">Login</a> &nbsp; &nbsp; <a href="{% url 'Register' %}" style="color: #FFFFFF;">Register</a>
+      </div>
+    {% endif %}
+  </div>
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
     <div class="container">
